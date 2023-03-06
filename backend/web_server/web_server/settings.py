@@ -1,10 +1,9 @@
 from pathlib import Path
-from dotenv import load_dotenv
-import os
+import my_settings
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-load_dotenv()
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = my_settings.SECRET_KEY
 
 DEBUG = True
 
@@ -69,16 +68,16 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'web_server',
-        'USER': os.environ.get("web_server_user"),
-        'PASSWORD' : os.environ.get("web_server_pw"),
+        'USER': my_settings.web_server_user,
+        'PASSWORD' : my_settings.web_server_pw,
         'HOST' : 'localhost',
         'PORT' : '3306',
     },
     'station_db' : {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'station',
-        'USER': os.environ.get("db_server_user"),
-        'PASSWORD' : os.environ.get("db_server_pw"),
+        'USER': my_settings.db_server_user,
+        'PASSWORD' : my_settings.db_server_pw,
         'HOST' : 'localhost',
         'PORT' : '3306',
     }

@@ -1,22 +1,10 @@
-### venv ###
-# Virtualenv
-.Python
-[Bb]in
-[Ii]nclude
-[Ll]ib
-[Ll]ib64
-[Ll]ocal
-[Ss]cripts
-pyvenv.cfg
-.venv
-venv
-pip-selfcheck.json
-
 ### dotenv ###
 .env
 
 # etc
 mecab-0.996-ko-0.9.2
+
+my_settings.py
 
 ### Django ###
 *.log
