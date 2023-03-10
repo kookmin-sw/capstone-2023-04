@@ -5,10 +5,20 @@ import re
 from konlpy.tag import Mecab
 from collections import Counter
 
+# 장고 세팅
+import os
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "web_server.settings")
+
+import django
+django.setup()
+
+# API 키
 import my_settings
 
 client_id = my_settings.client_id
 client_secret = my_settings.client_secret
+
+from station.models import Stationinfo
 
 query = urllib.parse.quote('지하철 지연')
 display = 100
@@ -60,7 +70,7 @@ def find_data():
     for n in news_df.Description:
         news.append(n)
 
-    # Mecap 이용해서 지하철 역명만 저장
+    # Mecab 이용해서 지하철 역명만 저장
     station_nouns = []
     for n in news:
         for noun in tagger.nouns(n):
@@ -72,6 +82,6 @@ def find_data():
     station_nouns_counter = Counter(station_nouns)
     # 상위 20개만 저장
     top_station_nouns = list(station_nouns_counter.most_common(20))
-    print(top_station_nouns[0][0])
+    return top_station_nouns
 
-find_data()
+print(find_data())
