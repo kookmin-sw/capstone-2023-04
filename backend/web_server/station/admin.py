@@ -1,4 +1,5 @@
 from django.contrib import admin
-from station.models import Stationinfo
+from .models import *
 
-admin.site.register(Stationinfo)
+admin.site.register(Stations)
+admin.site.register(Times)
