@@ -113,6 +113,7 @@ class Crawler():
         
         for station in stations:    
             query = urllib.parse.quote(station)
+            # 서울시 API
             url = 'http://swopenAPI.seoul.go.kr/api/subway/' + api_key + '/json/realtimeStationArrival/0/100/'+query
         
             request = urllib.request.Request(url)
@@ -124,9 +125,9 @@ class Crawler():
                 response_body = response.read()
                 response_dict = json.loads(response_body.decode('utf-8'))
                 items = response_dict['realtimeArrivalList']
-                items.sort(key = lambda x:x['subwayId'])
-            
+                items.sort(key = lambda x:x['subwayId']) # 호선 순으로 정렬
                 
+                # json 응답에서 필요한 정보만 처리
                 for item_index in range(0, len(items)):
                     subwayId = items[item_index]['subwayId']
                     heading_to = items[item_index]['trainLineNm']
