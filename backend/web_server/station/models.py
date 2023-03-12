@@ -12,6 +12,7 @@ class Stations(models.Model):
     station_name = models.CharField(max_length=10)
     heading_to = models.CharField(max_length=100, blank=True, null=True)
     arrival_time = models.IntegerField(blank=True, null=True)
+    subway_id = models.CharField(max_length=4)
 
     def __str__(self):
         return self.station_name
