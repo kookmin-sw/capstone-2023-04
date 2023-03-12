@@ -8,5 +8,6 @@ from .crawler.crawler import Crawler
 def getTestDatas(request):
     crawler = Crawler()
     station = crawler.find_station()
+    station_info = crawler.station_info(station)
     print(station)
     return Response(station)

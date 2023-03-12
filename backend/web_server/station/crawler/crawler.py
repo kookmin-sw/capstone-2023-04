@@ -13,9 +13,6 @@ class Crawler():
         self.__display = 100
         self.__sort = 'date'
         
-        self.__client_id = os.environ['client_id']
-        self.__client_secret = os.environ['client_secret']
-        
         self.__dataframe = pd.DataFrame(columns=("Title", "Description", "Pub Date"))
         
         __station_info = pd.read_excel(io='/home/mumat/capstone-2023-04/backend/web_server/station/data/station_230309.xlsx')
@@ -42,14 +39,6 @@ class Crawler():
         return self.__sort
         
     @property
-    def clientid(self):
-        return self.__client_id
-    
-    @property
-    def clientsecret(self):
-        return self.__client_secret
-    
-    @property
     def dataframe(self):
         return self.__dataframe
     
@@ -66,6 +55,9 @@ class Crawler():
         query = urllib.parse.quote('지하철 지연')
         news_df = self.dataframe
         
+        client_id = os.environ['client_id']
+        client_secret = os.environ['client_secret']
+        
         tagger = Mecab()
         
         # 네이버 뉴스 검색 api 사용
@@ -73,8 +65,8 @@ class Crawler():
             url = 'https://openapi.naver.com/v1/search/news?query=' + query + '&display=' + str(display) + '&start=' + str(start_index) + '&sort=' + sort
             
             request = urllib.request.Request(url)
-            request.add_header('X-Naver-Client-Id', self.clientid)
-            request.add_header('X-Naver-Client-Secret', self.clientsecret)
+            request.add_header('X-Naver-Client-Id', client_id)
+            request.add_header('X-Naver-Client-Secret', client_secret)
             
             response = urllib.request.urlopen(request)
             rescode = response.getcode()
@@ -100,8 +92,6 @@ class Crawler():
         for n in news_df.Description:
             news.append(n)
         
-        
-        
         # Mecab 이용해서 지하철 역명만 저장
         station = self.station
         station_nouns = []
@@ -117,3 +107,33 @@ class Crawler():
         top_station_nouns = list(station_nouns_counter.most_common(20))
         
         return top_station_nouns
+    
+    def station_info(stations):
+        api_key = os.environ['api_key']
+        
+        for station in stations:    
+            query = urllib.parse.quote(station)
+            url = 'http://swopenAPI.seoul.go.kr/api/subway/' + api_key + '/json/realtimeStationArrival/0/100/'+query
+        
+            request = urllib.request.Request(url)
+            
+            response = urllib.request.urlopen(request)
+            rescode = response.getcode()
+            
+            if(rescode == 200):
+                response_body = response.read()
+                response_dict = json.loads(response_body.decode('utf-8'))
+                items = response_dict['realtimeArrivalList']
+                items.sort(key = lambda x:x['subwayId'])
+            
+                
+                for item_index in range(0, len(items)):
+                    subwayId = items[item_index]['subwayId']
+                    heading_to = items[item_index]['trainLineNm']
+                    name = items[item_index]['statnNm']
+                    arrival_time = items[item_index]['barvlDt']
+                    
+                    print(name, subwayId, heading_to, arrival_time)
+            else:
+                print("Error Code: " + rescode)
+        
