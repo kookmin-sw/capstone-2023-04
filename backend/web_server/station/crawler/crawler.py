@@ -108,7 +108,7 @@ class Crawler():
         
         return top_station_nouns
     
-    def station_info(stations):
+    def station_info(self, stations):
         api_key = os.environ['api_key']
         
         for station in stations:    
@@ -119,11 +119,12 @@ class Crawler():
             request = urllib.request.Request(url)
             
             response = urllib.request.urlopen(request)
-            rescode = response.getcode()
-            
+            response_body = response.read()
+            rescode = response.getcode()  
+
             if(rescode == 200):
-                response_body = response.read()
                 response_dict = json.loads(response_body.decode('utf-8'))
+                print(response_dict)
                 items = response_dict['realtimeArrivalList']
                 items.sort(key = lambda x:x['subwayId']) # 호선 순으로 정렬
                 
