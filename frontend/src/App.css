@@ -1,0 +1,46 @@
+.html {
+  background-color: #000000;
+}
+
+.App {
+  background-color: #1e1f21;
+  text-align: center;
+  margin-left: 20%;
+  margin-right: 20%;
+  height: 100vh;
+  color: #ffffff;
+}
+
+.Appheader {
+  background-color: #292a2d;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(5px + 2vmin);
+  color: #09c75b;
+  font-weight: bold;
+}
+
+.Informationbox {
+  text-align: left;
+  border: 10px solid #292a2d;
+  border-radius: 10px;
+  margin: 10px;
+  height: 80px;
+  background-color: #292a2d;
+}
+
+.Appbutton button {
+  width: 99px;
+  height: 38px;
+  margin: 10px;
+  float: right;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #00ac31;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: bold;
+  text-align: center;
+}
