@@ -1,4 +1,3 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-c66648af7eb3fe8bc4f294546bfd86ef473780cde1dea487d3c4ff354943c9ae.svg)](https://classroom.github.com/online_ide?assignment_repo_id=10029363&assignment_repo_type=AssignmentRepo)
 # 알고타 - 2023 캡스톤디자인 04조
 
 
@@ -16,9 +15,9 @@
 ---
 
 ### 3. 팀 소개
-팀장 - 천성규
+팀장 - 천성규 (****0269)
 
-팀원 - 김명찬
+팀원 - 김명찬 (****2026)
 
 ---
 
