@@ -1,37 +1,67 @@
-## Welcome to GitHub Pages
+# 알고타 - 2023 캡스톤디자인 04조
 
-You can use the [editor on GitHub](https://github.com/kookmin-sw/cap-template/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### 1. 프로잭트 소개
 
-### Markdown
+22년 하반기 전장연의 시위로 인한 학생 및 직장인들의 대중교통, 특히 지하철 이용이 어려웠다. 
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+지하철 실시간 도착 정보를 활용하여, 시민들이 지하철을 타고 이동하는 경로에 지연 정보를 알려준다면 어떨까?
 
-```markdown
-Syntax highlighted code block
+해당 정보를 통해 지하철이 아닌 다른 방법으로 이동을 하면 시민들의 불편함을 줄이기 위해 프로젝트를 기획했다.
 
-# Header 1
-## Header 2
-### Header 3
+---
 
-- Bulleted
-- List
+### 2. 소개 영상
 
-1. Numbered
-2. List
+프로젝트 소개하는 영상을 추가하세요
 
-**Bold** and _Italic_ and `Code` text
+---
 
-[Link](url) and ![Image](src)
+### 3. 팀 소개
+팀장 - 천성규 (****0269)
+
+팀원 - 김명찬 (****2026)
+
+---
+
+### 4. 사용법
+### Mecab 설치
+```
+tar zxfv mecab-0.996-ko-0.9.2.tar.gz
+cd mecab-0.996-ko-0.9.2
+./configure 
+make
+make check
+su
+make install
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+### Mecab-ko-dic 설치
+```
+tar zxfv mecab-ko-dic-2.1.1-20180720.tar.gz
+cd mecab-ko-dic-2.1.1-20180720
+./configure 
+make
+su
+make install
+```
 
-### Jekyll Themes
+### MySQL 설치
+```
+sudo apt update
+sudo apt install mysql-server
+sudo mysql
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password by '새로운비밀번호';
+```
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/kookmin-sw/cap-template/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+### MySQL 실행
+```
+sudo /etc/init.d/mysql start
+sudo mysql -u root -p
+```
 
-### Support or Contact
+---
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+### 5. 기타
+
+추가적인 내용은 자유롭게 작성하세요.
