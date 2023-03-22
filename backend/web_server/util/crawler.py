@@ -4,7 +4,12 @@ import json
 import re
 from konlpy.tag import Mecab
 from collections import Counter
+
 import os
+import sys
+import django
+sys.path.append('/home/mumat/capstone-2023-04/backend/web_server')
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "web_server.settings")
 
 class Crawler():
     def __init__(self):
@@ -21,6 +26,7 @@ class Crawler():
         for row in __station_info.itertuples():
             self.__station.add(row[2])
         self.__station = list(self.__station)
+        
         
     @property        
     def start(self):
@@ -106,10 +112,20 @@ class Crawler():
         # 상위 20개만 저장
         top_station_nouns = list(station_nouns_counter.most_common(20))
         
-        return top_station_nouns
+        results = []
+        for item in top_station_nouns:
+            results.append(item[0])
+        
+        return results
     
     def station_info(self, stations):
+        django.setup()
+        from station.models import Stations
+        
         api_key = os.environ['api_key']
+        
+        queryset = Stations.objects.all()
+        queryset.delete()
         
         for station in stations:    
             query = urllib.parse.quote(station)
@@ -124,18 +140,22 @@ class Crawler():
 
             if(rescode == 200):
                 response_dict = json.loads(response_body.decode('utf-8'))
-                print(response_dict)
                 items = response_dict['realtimeArrivalList']
                 items.sort(key = lambda x:x['subwayId']) # 호선 순으로 정렬
                 
                 # json 응답에서 필요한 정보만 처리
+                
+                
                 for item_index in range(0, len(items)):
-                    subwayId = items[item_index]['subwayId']
-                    heading_to = items[item_index]['trainLineNm']
-                    name = items[item_index]['statnNm']
-                    arrival_time = items[item_index]['barvlDt']
-                    
-                    print(name, subwayId, heading_to, arrival_time)
+                    if items[item_index]['ordkey'][1] == "1" and int(items[item_index]['barvlDt']) > 0:
+                        name = items[item_index]['statnNm']
+                        heading_to = items[item_index]['trainLineNm']
+                        arrival_time = items[item_index]['barvlDt']
+                        subwayId = items[item_index]['subwayId']
+                        
+                        print(name, subwayId, heading_to, arrival_time, end="\n")
+                        
+                        Stations.objects.create(station_name=name, heading_to=heading_to, arrival_time=arrival_time, subway_id=subwayId)
             else:
                 print("Error Code: " + rescode)
         
