@@ -20,7 +20,11 @@
 ### 3. 팀 소개
 팀장 - 천성규 (****0269)
 
+<img src = "./image/cheon.jpg" height="200">
+
 팀원 - 김명찬 (****2026)
+
+<img src = "./image/kim.jpg" height="200">
 
 ---
 
