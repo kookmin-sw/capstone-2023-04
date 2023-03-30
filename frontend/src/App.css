@@ -2,7 +2,7 @@
   background-color: #000000;
 }
 
-.App {
+.App {    
   margin: 0 20% 0 20%;
   height: 100vh;
   color: #ffffff;
@@ -13,21 +13,28 @@
 .Appheader {
   display: flex;
   flex-direction: column;
-  align-items: center;
   color: #09c75b;
   background-color: #292a2d;
+  align-items: center;
+  justify-content: center;
   font-weight: bold;
   font-size: calc(5px + 2vmin);
-  justify-content: center;
 }
 
 .Informationbox {
-  height: 80px;
   margin: 10px;
   border: 10px solid #292a2d;
   border-radius: 10px;
   background-color: #292a2d;
   text-align: left;
+}
+
+.Informationbox p {
+  display: flex;
+  margin: 10px;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  font-weight: bold;
 }
 
 .Appbutton button {
@@ -38,7 +45,7 @@
   border-radius: 10px;
   color: #ffffff;
   background-color: #00ac31;
-  font-size: 13px;
+  font-size: calc(3px + 1vmin);
   font-weight: bold;
   text-align: center;
   cursor: pointer;
