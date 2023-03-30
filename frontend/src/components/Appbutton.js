@@ -1,14 +1,14 @@
 import React from "react";
 import { useState } from "react";
 
-const handleSubmit = () => {
+function handleSubmit() {
   alert("저장 성공");
 };
 
-const Appbutton = () => {
+function Appbutton(props) {
   return (
     <div className="Appbutton">
-      <button onClick={handleSubmit}>찾아보자</button>
+      <button onClick={handleSubmit}>{props.message}</button>
     </div>
   );
 };

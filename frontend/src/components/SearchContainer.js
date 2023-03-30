@@ -21,7 +21,7 @@ const SearchContainer = () => {
         />
       </div>
       <div>
-        <Appbutton />
+        <Appbutton message="찾아보자!"/>
       </div>
     </div>
   );
