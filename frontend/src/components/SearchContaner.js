@@ -1,10 +1,10 @@
 import React from "react";
 import Appbutton from "./Appbutton";
-import "./SearchBox.css";
+import "./SearchContainer.css";
 
-const SearchBoxes = () => {
+const SearchContainer = () => {
   return (
-    <div className="SearchBoxes">
+    <div className="SearchContainer">
       <div>
         <input type="text" placeholder="출발지를 입력하세요" />
       </div>
@@ -18,4 +18,4 @@ const SearchBoxes = () => {
   );
 };
 
-export default SearchBoxes;
+export default SearchContainer;
