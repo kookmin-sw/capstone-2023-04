@@ -1,7 +1,7 @@
 import "./App.css";
 import Appbutton from "./components/Appbutton";
 import Appheader from "./components/Appheader";
-import SearchContainer from "./components/SearchContaner";
+import SearchContainer from "./components/SearchContainer";
 
 function App() {
   return (
