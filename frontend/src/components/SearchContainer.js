@@ -2,7 +2,7 @@ import React from "react";
 import Appbutton from "./Appbutton";
 import "./SearchContainer.css";
 
-const SearchContainer = () => {
+function SearchContainer() {
   return (
     <div className="SearchContainer">
       <div>

@@ -1,4 +1,4 @@
-const Appheader = () => {
+function Appheader() {
   return (
     <div className="Appheader">
       <h1>ALGOTA</h1>
