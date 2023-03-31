@@ -144,8 +144,6 @@ class Crawler():
                 items.sort(key = lambda x:x['subwayId']) # 호선 순으로 정렬
                 
                 # json 응답에서 필요한 정보만 처리
-                
-                
                 for item_index in range(0, len(items)):
                     if items[item_index]['ordkey'][1] == "1" and int(items[item_index]['barvlDt']) > 0:
                         name = items[item_index]['statnNm']
