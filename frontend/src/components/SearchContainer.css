@@ -1,0 +1,29 @@
+.SearchContainer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: space-around;
+  margin: 10px 0 10px 0;
+  line-height: 30px;
+}
+
+.Waypoint {
+  width: 60%;
+  height: 30px;
+  border-radius: 10px;
+  background-color: #292a2d;
+}
+
+input {
+  padding: 0 0 0 10px;
+  color: #ffffff;
+  font-size: calc(5px + 2vmin);
+  font-weight: 600;
+}
+
+input::placeholder {
+  color: #777777;
+  font-size: calc(5px + 2vmin);
+  font-weight: 600;
+}

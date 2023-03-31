@@ -1,9 +1,0 @@
-.SearchBoxes {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 0 0 5px 0;
-  height: auto;
-  line-height: 30px;
-  padding: 0.8em 0.5em;
-}
