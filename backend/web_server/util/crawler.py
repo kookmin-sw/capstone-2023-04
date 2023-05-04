@@ -11,6 +11,7 @@ import django
 sys.path.append('/home/mumat/capstone-2023-04/backend/web_server')
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "web_server.settings")
 
+from time import time
 class Crawler():
     def __init__(self):
         self.__start = 1
@@ -120,7 +121,7 @@ class Crawler():
     
     def station_info(self, stations):
         django.setup()
-        from station.models import Stations
+        from station.models import Stations, Times
         
         api_key = os.environ['api_key']
         
@@ -142,10 +143,10 @@ class Crawler():
                 response_dict = json.loads(response_body.decode('utf-8'))
                 items = response_dict['realtimeArrivalList']
                 items.sort(key = lambda x:x['subwayId']) # 호선 순으로 정렬
-                
                 # json 응답에서 필요한 정보만 처리
                 for item_index in range(0, len(items)):
-                    if items[item_index]['ordkey'][1] == "1" and int(items[item_index]['barvlDt']) > 0:
+                    if items[item_index]['ordkey'][1] == "1" and int(items[item_index]['barvlDt']) > 300:
+                        
                         name = items[item_index]['statnNm']
                         heading_to = items[item_index]['trainLineNm']
                         arrival_time = items[item_index]['barvlDt']
@@ -153,6 +154,10 @@ class Crawler():
                         
                         print(name, subwayId, heading_to, arrival_time, end="\n")
                         
+                        time = Times.objects.get_or_create()
+                        if time:
+                            Times.objects.update()
+                        print(time[0])
                         Stations.objects.create(station_name=name, heading_to=heading_to, arrival_time=arrival_time, subway_id=subwayId)
             else:
                 print("Error Code: " + rescode)
