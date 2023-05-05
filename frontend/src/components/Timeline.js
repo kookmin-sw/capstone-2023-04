@@ -1,12 +1,13 @@
+import React from "react";
 import "./Timeline.css";
 
-function Timeline() {
+function Timeline(props) {
   return (
     <span className="Timeline">
       <span className="Iconcontainer">
-        <img src="..\icon\bus_error_icon.png"></img>
+        <img src="icon/metro_error_icon.png"></img>
       </span>
-      <div>hello</div>
+      <div className="Routetime">10분</div>
     </span>
   );
 }
