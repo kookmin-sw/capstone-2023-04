@@ -1,8 +1,11 @@
 import React from "react";
-import { useState } from "react";
+import api from "../api/mainApi";
+import "./Appbutton.css";
 
 function handleSubmit() {
-  alert("저장 성공");
+  api.getStation().then((res) => {
+    console.log(res.data)
+  })
 };
 
 function Appbutton(props) {
