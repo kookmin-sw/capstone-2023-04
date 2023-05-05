@@ -1,6 +1,6 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-
+from rest_framework.generics import ListAPIView
 from .serializer import *
 
 from .models import *
@@ -23,3 +23,7 @@ def getTime(request):
     queryset = Times.objects.all()
     serializer = TimeSerializer(queryset, many=True)
     return Response(serializer.data)
+
+class ListStationView(ListAPIView):
+    queryset = Stations.objects.all()
+    serializer_class = StationSerializer

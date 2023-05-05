@@ -14,6 +14,10 @@ export default function Main() {
         let time = res.data[0].request_time
         setTime(time);
       });
+      api.getStationList().then((res) => {
+        var stationList = new Array(res.data);
+        console.log(stationList);
+    })
     }, []);
 
     const today = new Date();
@@ -22,8 +26,8 @@ export default function Main() {
     const diffMin = diff / (60 * 1000);
     console.log(today + "\n" + before);
     console.log(diffMin);
-    // Todo : diffMin >= 5 일 때만 새로고침 버튼 활성화
-    
+    const refresh = diffMin.toString().charAt() + " 분 전";
+
     return (
     <div className="html">
         <div className="App">
@@ -36,8 +40,11 @@ export default function Main() {
                 <Timeline />
                 </div>
             </div>
-
-            <Appbutton message={refreshTime} />
+                {
+                    diffMin >= 5 
+                    ? <Appbutton message="새로고침" /> 
+                    : <Appbutton message={refresh} /> 
+                }
         </div>
     </div>
     );

@@ -4,14 +4,15 @@ import "./Appbutton.css";
 import { useRecoilState } from 'recoil';
 import { stationListState } from "store";
 
-function handleSubmit() {
-  
-  api.getStation().then((res) => {
-    console.log(res.data)
-  })
-};
-
 function Appbutton(props) {
+  const setStationList = useRecoilState(stationListState);
+
+  function handleSubmit() {
+    api.getStationInfo().then((res) => {
+      setStationList(res.data)
+    })
+  };
+
   return (
     <div className="Appbutton">
       <button onClick={handleSubmit}>{props.message}</button>
