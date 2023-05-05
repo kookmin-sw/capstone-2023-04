@@ -1,12 +1,12 @@
 import React from "react";
-import api from "../api/mainApi";
+import api from "../../api/mainApi";
 import "./Appbutton.css";
 
 function handleSubmit() {
   api.getStation().then((res) => {
-    console.log(res.data)
-  })
-};
+    console.log(res.data);
+  });
+}
 
 function Appbutton(props) {
   return (
@@ -14,5 +14,5 @@ function Appbutton(props) {
       <button onClick={handleSubmit}>{props.message}</button>
     </div>
   );
-};
+}
 export default Appbutton;

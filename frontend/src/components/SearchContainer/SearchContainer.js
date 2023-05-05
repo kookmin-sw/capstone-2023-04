@@ -1,5 +1,5 @@
 import React from "react";
-import Appbutton from "./Appbutton";
+import Appbutton from "../Appbutton/Appbutton";
 import "./SearchContainer.css";
 
 function SearchContainer() {
@@ -21,10 +21,10 @@ function SearchContainer() {
         />
       </div>
       <div>
-        <Appbutton message="찾아보자!"/>
+        <Appbutton message="찾아보자!" />
       </div>
     </div>
   );
-};
+}
 
 export default SearchContainer;
