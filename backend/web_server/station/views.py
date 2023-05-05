@@ -6,8 +6,6 @@ from .serializer import *
 from .models import *
 from util import crawler
 
-import time
-
 # 새로고침 버튼 눌렀을 때 불러올 API
 @api_view(['GET'])
 def getStation(request):
@@ -24,5 +22,4 @@ def getStation(request):
 def getTime(request):
     queryset = Times.objects.all()
     serializer = TimeSerializer(queryset, many=True)
-    time_string = serializer.data[0]['request_time']
     return Response(serializer.data)

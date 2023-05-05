@@ -1,11 +1,10 @@
 from django.db import models
 
 class Times(models.Model):
-    request_time = models.TimeField(auto_now=True)
-
+    request_time = models.DateTimeField(auto_now=True)
+    
     def __str__(self):
         return str(self.request_time)
-    
     class Meta:
         verbose_name = 'Times'
         verbose_name_plural = 'Times'
