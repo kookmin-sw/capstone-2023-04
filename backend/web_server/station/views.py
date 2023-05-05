@@ -8,6 +8,7 @@ from util import crawler
 
 import time
 
+# 새로고침 버튼 눌렀을 때 불러올 API
 @api_view(['GET'])
 def getStation(request):
     getter = crawler.Crawler()
@@ -18,12 +19,10 @@ def getStation(request):
     
     return Response(serializer.data)
 
+# 홈 화면 로딩할 때 불러올 API
 @api_view(['GET'])
 def getTime(request):
     queryset = Times.objects.all()
     serializer = TimeSerializer(queryset, many=True)
     time_string = serializer.data[0]['request_time']
-    time_format = "%H:%M:%S"
-    time_result = time.strptime(time_string, time_format)
-    print(type(time_result))
     return Response(serializer.data)
