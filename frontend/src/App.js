@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react';
 import {
   RecoilRoot,
-  // atom,
-  // selector,
-  // useRecoilState,
-  // useRecoilValue,
+  atom,
+  selector,
+  useRecoilState,
+  useRecoilValue,
 } from 'recoil';
-// import "./App.css";
 import api from "./api/mainApi"
 import MainRoute from "./route/MainRoute";
 
