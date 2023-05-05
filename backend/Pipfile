@@ -10,6 +10,7 @@ konlpy = "*"
 mysqlclient = "*"
 djangorestframework = "*"
 openpyxl = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 
