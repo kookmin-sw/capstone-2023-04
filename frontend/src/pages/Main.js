@@ -6,7 +6,7 @@ import { stationListState } from 'store';
 import api from "api/mainApi";
 
 export default function Main() {    
-    const stationList = useRecoilValue(stationListState);
+    const [stationList, setStationList] = useState([]);
     const [refreshTime, setTime] = useState('');
 
     useEffect(() => {
@@ -15,10 +15,11 @@ export default function Main() {
         setTime(time);
       });
       api.getStationList().then((res) => {
-        var stationList = new Array(res.data);
-        console.log(stationList);
+        setStationList(res.data);
+        console.log(stationList[0]);
     })
     }, []);
+
 
     const today = new Date();
     const before = new Date(refreshTime);
@@ -37,8 +38,15 @@ export default function Main() {
             <div className="InformationClass">
                 <div className="Informationbox">
                     <p>지금 지연이 예상되고 있어요!</p>
-                <Timeline />
+                    {
+                        stationList.map((item, index) => {
+                            return (
+                                <Timeline message={item.station_name} />
+                            );
+                        })
+                    }
                 </div>
+                
             </div>
                 {
                     diffMin >= 5 

@@ -7,7 +7,7 @@ function Timeline(props) {
       <span className="Iconcontainer">
         <img src="icon/metro_error_icon.png"></img>
       </span>
-      <div className="Routetime">4호선 혜화역</div>
+      <div className="Routetime">{props.message}</div>
     </span>
   );
 }
