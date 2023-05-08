@@ -1,39 +1,19 @@
-import React, {
-    useEffect, useState
-} from "react";
-import DaumPostcode from "react-daum-postcode";
+import React from "react";
 
+import { Appbutton, Appheader, Postcode, SearchContainer, Timeline } from "components";
 
-const Postcode = (props) => {
-  const complete = (data) => {
-    let fullAddress = data.address;
-    let extraAddress = "";
+import { useRecoilValue } from "recoil";
+import { stationListState } from "store";
 
-    if (data.addressType === "R") {
-      if (data.bname !== "") {
-        extraAddress += data.bname;
-      }
-      if (data.buildingName !== "") {
-        extraAddress +=
-          extraAddress !== "" ? `, ${data.buildingName}` : data.buildingName;
-      }
-      fullAddress += extraAddress !== "" ? ` (${extraAddress})` : "";
-    }
-    console.log(data);
-    console.log(fullAddress);
-    console.log(data.zonecode);
-
-    props.setcompany({
-      ...props.company,
-      address: fullAddress,
-    });
-  };
+export default function Search() {
 
   return (
-    <div>
-      <DaumPostcode className="postmodal" autoClose onComplete={complete} />
+    <div className="html">
+      <div className="App">
+              <Postcode>
+                  
+        </Postcode>
+      </div>
     </div>
   );
-};
-
-export default Postcode;
+}
