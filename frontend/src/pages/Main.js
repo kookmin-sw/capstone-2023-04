@@ -25,7 +25,6 @@ export default function Main() {
     const before = new Date(refreshTime);
     const diff = today.getTime() - before.getTime();
     const diffMin = diff / (60 * 1000);
-    console.log(today + "\n" + before);
     console.log(diffMin);
     const refresh = diffMin.toString().charAt() + " 분 전";
 
@@ -41,18 +40,14 @@ export default function Main() {
                     {
                         stationList.map((item, index) => {
                             return (
-                                <Timeline message={item.station_name} />
+                                <Timeline key={index} message={item.station_name} />
                             );
                         })
                     }
                 </div>
                 
             </div>
-                {
-                    diffMin >= 5 
-                    ? <Appbutton message="새로고침" /> 
-                    : <Appbutton message={refresh} /> 
-                }
+                    <Appbutton message={refresh} state={diffMin} /> 
         </div>
     </div>
     );
