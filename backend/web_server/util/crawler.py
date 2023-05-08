@@ -127,10 +127,8 @@ class Crawler():
         
         queryset = Stations.objects.all()
         queryset.delete()
-        time = Times.objects.get_or_create()
-        if time:
-            Times.objects.update()
-        print(time[0])
+        time = Times.objects.update_or_create()
+        print(time) # 완성 후 삭제
         
         for station in stations:    
             query = urllib.parse.quote(station)
@@ -156,7 +154,7 @@ class Crawler():
                         arrival_time = items[item_index]['barvlDt']
                         subwayId = items[item_index]['subwayId']
                         
-                        print(name, subwayId, heading_to, arrival_time, end="\n")
+                        print(name, subwayId, heading_to, arrival_time, end="\n") # 완성 후 삭제
                         
                         Stations.objects.create(station_name=name, heading_to=heading_to, arrival_time=arrival_time, subway_id=subwayId)
             else:
