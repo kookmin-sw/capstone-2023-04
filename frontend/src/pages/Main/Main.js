@@ -40,14 +40,13 @@ export default function Main() {
                     {
                         stationList.map((item, index) => {
                             return (
-                                <Timeline key={index} message={item.station_name} />
+                                <Timeline key={index} station={item.station_name} subway_id={item.subway_id} />
                             );
                         })
                     }
                 </div>
-                
             </div>
-                    <Appbutton message={refresh} state={diffMin} /> 
+                <Appbutton message={refresh} state={diffMin} /> 
         </div>
     </div>
     );
