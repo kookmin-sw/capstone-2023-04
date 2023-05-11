@@ -24,7 +24,7 @@ function Appbutton(props) {
     {
       return (
         <div className="Appbutton">
-          <button onClick={handleSubmit}>{props.message}</button>
+          <button onClick={handleSubmit}>새로고침</button>
         </div>
       );
     } else 
