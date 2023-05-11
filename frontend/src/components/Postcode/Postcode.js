@@ -1,8 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import DaumPostcode from "react-daum-postcode";
+import { useRecoilState } from "recoil";
+import { departureState, arrivalState } from "store";
 import "./postcode.css";
 
 const Postcode = (props) => {
+  const navigate = useNavigate();
+  const [departure, setDeparture] = useRecoilState(departureState);
+  const [arrival, setArrival] = useRecoilState(arrivalState);
+  console.log(props.location);
+
   const complete = (data) => {
     let fullAddress = data.address;
     let extraAddress = "";
@@ -20,6 +28,13 @@ const Postcode = (props) => {
     console.log(data);
     console.log(fullAddress);
     console.log(data.zonecode);
+
+    if (props.location === "departure") {
+      setDeparture(fullAddress);
+    } else {
+      setArrival(fullAddress);
+    }
+    navigate("/");
   };
 
   return (

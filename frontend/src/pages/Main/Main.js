@@ -17,7 +17,7 @@ export default function Main() {
       api.getStationList().then((res) => {
         setStationList(res.data);
         console.log(stationList[0]);
-    })
+      })
     }, []);
 
 
