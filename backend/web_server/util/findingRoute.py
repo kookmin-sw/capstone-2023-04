@@ -49,14 +49,19 @@ class FindingRoute():
             subwayCount = response_dict['result']['subwayCount']
             subwayBusCount = response_dict['result']['subwayBusCount']
             count = {'totalCount' : busCount + subwayCount + subwayBusCount,'busCount' : busCount, 'subwayCount' : subwayCount, 'subwayBusCount' : subwayBusCount}
-        
-            path = {'path' : response_dict['result']['path']}
-        
-            print(count, path)
-            
-            result = [count, path]
-            
-            return result
-                
 
-        
+            path = response_dict['result']['path']
+            
+            info = {'count' : count}
+            
+            results = []
+            for index in range(len(path)):
+                pathType = path[index]['pathType']
+                totalTime = path[index]['info']['totalTime']
+                subPath = path[index]['subPath']
+                
+                info = {'pathType' : pathType, 'totalTime' : totalTime, 'subPath' : subPath}
+                
+                results.append(info)
+            
+            return results
