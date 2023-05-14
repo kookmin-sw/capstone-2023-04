@@ -11,7 +11,6 @@ import django
 sys.path.append('/home/mumat/capstone-2023-04/backend/web_server')
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "web_server.settings")
 
-from time import time
 class Crawler():
     def __init__(self):
         self.__start = 1

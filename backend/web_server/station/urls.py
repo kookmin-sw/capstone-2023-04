@@ -5,4 +5,5 @@ urlpatterns = [
     path('station', views.getStation, name="station"),
     path('time', views.getTime, name='time'),
     path('list', views.ListStationView.as_view(), name='list'),
+    path('findRoute', views.findRoute, name='findRoute'),
 ]

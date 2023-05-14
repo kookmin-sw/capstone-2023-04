@@ -4,7 +4,7 @@ from rest_framework.generics import ListAPIView
 from .serializer import *
 
 from .models import *
-from util import crawler
+from util import crawler, findingRoute
 
 # 새로고침 버튼 눌렀을 때 불러올 API
 @api_view(['GET'])
@@ -24,6 +24,19 @@ def getTime(request):
     serializer = TimeSerializer(queryset, many=True)
     return Response(serializer.data)
 
+@api_view(['POST'])
+def findRoute(request):
+    finder = findingRoute.FindingRoute()
+    starting_point = request.data['starting_point']
+    destination = request.data['destination']
+    address = [starting_point, destination]
+    
+    geocode = finder.geocoding(address)
+    route = finder.find_route(geocode)
+    return Response({'geocode' : geocode, 'route' : route}) 
+    
+    
+    
 class ListStationView(ListAPIView):
     queryset = Stations.objects.all()
     serializer_class = StationSerializer
