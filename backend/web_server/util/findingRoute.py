@@ -25,7 +25,6 @@ class FindingRoute():
                 longitude = response_dict['addresses'][0]['x']
                 latitude = response_dict['addresses'][0]['y']
                 geocode.append([longitude, latitude])
-        print("성공")
         return geocode
         
     def find_route(self, geocode_list):
