@@ -45,9 +45,9 @@ class FindingRoute():
             response_body = response.read()
             response_dict = json.loads(response_body.decode('utf-8'))
            
-            busCount = response_dict['result']["busCount"]
-            subwayCount = response_dict['result']["subwayCount"]
-            subwayBusCount = response_dict['result']["subwayBusCount"]
+            busCount = response_dict['result']['busCount']
+            subwayCount = response_dict['result']['subwayCount']
+            subwayBusCount = response_dict['result']['subwayBusCount']
             count = {'totalCount' : busCount + subwayCount + subwayBusCount,'busCount' : busCount, 'subwayCount' : subwayCount, 'subwayBusCount' : subwayBusCount}
         
             path = {'path' : response_dict['result']['path']}
