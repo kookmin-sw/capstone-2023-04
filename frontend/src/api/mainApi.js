@@ -10,4 +10,7 @@ export default {
     getStationList() {
         return API.get('/station/list');
     },
+    postFindRoute(data) {
+        return API.post('/station/findRoute', data);
+    },
 };

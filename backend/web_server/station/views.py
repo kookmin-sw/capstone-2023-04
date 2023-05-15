@@ -33,7 +33,7 @@ def findRoute(request):
     
     geocode = finder.geocoding(address)
     route = finder.find_route(geocode)
-    return Response({'geocode' : geocode, 'route' : route}) 
+    return Response({'starting_point' : starting_point, 'destination' : destination, 'geocode' : geocode, 'route' : route}) 
     
     
     
