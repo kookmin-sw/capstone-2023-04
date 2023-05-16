@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import "./Main.css";
 import { Appbutton, Appheader, SearchContainer, Timeline } from "components";
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useRecoilState } from 'recoil';
 import { stationListState } from 'store';
 import api from "api/mainApi";
 
 export default function Main() {    
-    const [stationList, setStationList] = useState([]);
+    const [stationList, setStationList] = useRecoilState(stationListState);
     const [refreshTime, setTime] = useState('');
 
     useEffect(() => {
@@ -16,8 +16,8 @@ export default function Main() {
       });
       api.getStationList().then((res) => {
         setStationList(res.data);
-        console.log(stationList[0]);
       })
+      console.log(stationList);
     }, []);
 
 
@@ -40,7 +40,7 @@ export default function Main() {
                     {
                         stationList.map((item, index) => {
                             return (
-                                <Timeline key={index} station={item.station_name} subway_id={item.subway_id} />
+                                <Timeline key={index} station={item.station_name} subway_id={item.subway_id} heading_to={item.heading_to}/>
                             );
                         })
                     }
