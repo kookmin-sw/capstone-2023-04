@@ -1,3 +1,9 @@
+# 장고 경로 설정 및 settings.py 설정
+import os
+import sys
+sys.path.append('/home/mumat/capstone-2023-04/backend/web_server')
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "web_server.settings")
+
 import urllib.request
 import pandas as pd
 import json
@@ -5,12 +11,7 @@ import re
 from konlpy.tag import Mecab
 from collections import Counter
 
-import os
-import sys
 import django
-# 장고 경로 설정 및 settings.py 설정
-sys.path.append('/home/mumat/capstone-2023-04/backend/web_server')
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "web_server.settings")
 
 class Crawler():
     def __init__(self):
@@ -124,7 +125,6 @@ class Crawler():
         from station.models import Stations, Times
         
         api_key = os.environ['api_key']
-        
         queryset = Stations.objects.all()
         queryset.delete()
         time = Times.objects.update_or_create()
