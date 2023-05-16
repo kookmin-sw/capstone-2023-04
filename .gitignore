@@ -5,6 +5,7 @@
 mecab-0.996-ko-0.9.2
 test.py
 my_settings.py
+result.json
 
 ### Django ###
 *.log

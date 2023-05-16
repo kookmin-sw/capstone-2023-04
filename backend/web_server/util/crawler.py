@@ -8,10 +8,10 @@ from collections import Counter
 import os
 import sys
 import django
+# 장고 경로 설정 및 settings.py 설정
 sys.path.append('/home/mumat/capstone-2023-04/backend/web_server')
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "web_server.settings")
 
-from time import time
 class Crawler():
     def __init__(self):
         self.__start = 1
@@ -20,7 +20,7 @@ class Crawler():
         self.__sort = 'date'
         
         self.__dataframe = pd.DataFrame(columns=("Title", "Description", "Pub Date"))
-        
+        # 역명 파일 불러오기
         __station_info = pd.read_excel(io='/home/mumat/capstone-2023-04/backend/web_server/station/data/station_230309.xlsx')
         
         self.__station = set()
@@ -61,7 +61,7 @@ class Crawler():
         sort = self.sort
         query = urllib.parse.quote('지하철 지연')
         news_df = self.dataframe
-        
+        # bashrc에 담긴 변수들 불러옴
         client_id = os.environ['client_id']
         client_secret = os.environ['client_secret']
         
@@ -128,7 +128,6 @@ class Crawler():
         queryset = Stations.objects.all()
         queryset.delete()
         time = Times.objects.update_or_create()
-        print(time) # 완성 후 삭제
         
         for station in stations:    
             query = urllib.parse.quote(station)
@@ -144,7 +143,8 @@ class Crawler():
             if(rescode == 200):
                 response_dict = json.loads(response_body.decode('utf-8'))
                 items = response_dict['realtimeArrivalList']
-                items.sort(key = lambda x:x['subwayId']) # 호선 순으로 정렬
+                # 호선 순으로 정렬
+                items.sort(key = lambda x:x['subwayId'])
                 # json 응답에서 필요한 정보만 처리
                 for item_index in range(0, len(items)):
                     if items[item_index]['ordkey'][1] == "1" and int(items[item_index]['barvlDt']) > 300:
@@ -153,8 +153,6 @@ class Crawler():
                         heading_to = items[item_index]['trainLineNm']
                         arrival_time = items[item_index]['barvlDt']
                         subwayId = items[item_index]['subwayId']
-                        
-                        print(name, subwayId, heading_to, arrival_time, end="\n") # 완성 후 삭제
                         
                         Stations.objects.create(station_name=name, heading_to=heading_to, arrival_time=arrival_time, subway_id=subwayId)
             else:
