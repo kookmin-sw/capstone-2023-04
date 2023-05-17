@@ -59,11 +59,11 @@ WSGI_APPLICATION = 'web_server.wsgi.application'
 
 # Database
 
-DATABASE_ROUTERS = [
-    'station.routers.MultiDBRouter',    
-]
+# DATABASE_ROUTERS = [
+#     'station.routers.MultiDBRouter',    
+# ]
 
-DATABASE_APPS_MAPPING = {'web_server':'default', 'station':'station_db'}
+# DATABASE_APPS_MAPPING = {'web_server':'default', 'station':'station_db'}
 
 DATABASES = {
     'default': {
@@ -71,15 +71,7 @@ DATABASES = {
         'NAME': 'web_server',
         'USER': my_settings.web_server_user,
         'PASSWORD' : my_settings.web_server_pw,
-        'HOST' : 'localhost',
-        'PORT' : '3306',
-    },
-    'station_db' : {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'station',
-        'USER': my_settings.db_server_user,
-        'PASSWORD' : my_settings.db_server_pw,
-        'HOST' : 'localhost',
+        'HOST' : 'database-1.c9tgp2ghcuo8.ap-northeast-2.rds.amazonaws.com',
         'PORT' : '3306',
     }
 }
