@@ -1,13 +1,13 @@
 import axios from 'axios';
 
 const API = axios.create({
-    baseURL: "http://localhost:8000",
+    baseURL: process.env.REACT_APP_IP,
     headers: {
         "Content-Type": "application/json",
     },
     withCredentials: true,
 });
-axios.defaults.baseURL = "http://localhost:8000";
+axios.defaults.baseURL = REACT_APP_IP;
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
 
