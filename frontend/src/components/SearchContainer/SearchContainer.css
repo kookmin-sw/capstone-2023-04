@@ -11,6 +11,7 @@
 .Waypoint {
   width: 60%;
   height: 30px;
+  margin: 5px 0 0 0;
   border-radius: 10px;
   background-color: #292a2d;
 }
