@@ -40,7 +40,7 @@ export default function Main() {
                     {
                         stationList.map((item, index) => {
                             return (
-                                <Timeline key={index} station={item.station_name} subway_id={item.subway_id} heading_to={item.heading_to}/>
+                                <Timeline key={index} station={item.station_name} subway_id={item.subway_id} heading_to={item.heading_to} updnLine={item.updnLine}/>
                             );
                         })
                     }

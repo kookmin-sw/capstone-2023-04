@@ -22,7 +22,7 @@ class Crawler():
         
         self.__dataframe = pd.DataFrame(columns=("Title", "Description", "Pub Date"))
         # 역명 파일 불러오기
-        __station_info = pd.read_excel(io='/home/ubuntu/capstone-2023-04/backend/web_server/station/data/station_230309.xlsx')
+        __station_info = pd.read_excel(io='./station/data/station_230309.xlsx')
         
         self.__station = set()
         for row in __station_info.itertuples():
@@ -150,11 +150,12 @@ class Crawler():
                     if items[item_index]['ordkey'][1] == "1" and int(items[item_index]['barvlDt']) > 300:
                         
                         name = items[item_index]['statnNm']
+                        updnLine = items[item_index]['updnLine']
                         heading_to = items[item_index]['trainLineNm']
                         arrival_time = items[item_index]['barvlDt']
                         subwayId = items[item_index]['subwayId']
                         
-                        Stations.objects.create(station_name=name, heading_to=heading_to, arrival_time=arrival_time, subway_id=subwayId)
+                        Stations.objects.create(station_name=name, updnLine=updnLine, heading_to=heading_to, arrival_time=arrival_time, subway_id=subwayId)
             else:
                 print("Error Code: " + rescode)
         

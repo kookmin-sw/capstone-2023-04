@@ -24,10 +24,8 @@ function Pathindex(props) {
       >
         <img src="icon/bus_normal_icon.png"></img>
       </span>
-      <div
-        className="Routetime"
-        style={{ backgroundColor: busColor[bus_index] }}
-      ></div>
+      <div className="Routetime" style={{ backgroundColor: busColor[bus_index] }}>
+      </div>
     </span>
   );
 }

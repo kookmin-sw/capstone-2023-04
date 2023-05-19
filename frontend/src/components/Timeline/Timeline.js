@@ -12,7 +12,7 @@ function Timeline(props) {
         <img src="icon/metro_error_icon.png"></img>
       </span>
       <div className="Routetime" style={{backgroundColor : color[index]}}>
-        {props.subway_id- 1000}호선 {props.station}역
+        {props.subway_id- 1000}호선 {props.station}역 - {props.updnLine}
       </div>
     </span>
   );

@@ -9,5 +9,5 @@ class TimeSerializer(ModelSerializer):
 class StationSerializer(ModelSerializer):
     class Meta:
         model = Stations
-        fields = ['station_name', 'heading_to', 'arrival_time', 'subway_id']
+        fields = ['station_name', 'updnLine', 'heading_to', 'arrival_time', 'subway_id']
         

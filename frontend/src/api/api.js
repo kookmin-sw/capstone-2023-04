@@ -7,7 +7,7 @@ const API = axios.create({
     },
     withCredentials: true,
 });
-axios.defaults.baseURL = REACT_APP_IP;
+axios.defaults.baseURL = process.env.REACT_APP_IP;
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
 
