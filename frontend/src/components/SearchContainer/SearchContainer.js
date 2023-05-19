@@ -15,6 +15,11 @@ function SearchContainer() {
     navigate("/search", { state: name });
   };
 
+  const navigateResult = (e) => {
+    const { result } = e.target;
+    navigate("/result", { state: result });
+  };
+
   return (
     <div className="SearchContainer">
       <div>
@@ -39,7 +44,11 @@ function SearchContainer() {
         />
       </div>
       <div>
-        <Appbutton message="찾아보자!" />
+        <Appbutton message="찾아보자!"
+          name="result"
+          value= {[departure, arrival]}
+          onclick={navigateResult}
+        />
       </div>
     </div>
   );
