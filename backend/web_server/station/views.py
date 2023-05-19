@@ -12,7 +12,7 @@ def getStation(request):
     getter = crawler.Crawler()
     station = getter.find_station()
     getter.station_info(station)
-    queryset = Stations.objects.all()
+    queryset = Stations.objects.all().order_by('subway_id')
     serializer = StationSerializer(queryset, many=True)
     
     return Response(serializer.data)
@@ -36,5 +36,5 @@ def findRoute(request):
     return Response({'route' : route}) 
     
 class ListStationView(ListAPIView):
-    queryset = Stations.objects.all()
+    queryset = Stations.objects.all().order_by('subway_id')
     serializer_class = StationSerializer
