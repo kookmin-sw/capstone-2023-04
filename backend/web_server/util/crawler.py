@@ -22,7 +22,7 @@ class Crawler():
         
         self.__dataframe = pd.DataFrame(columns=("Title", "Description", "Pub Date"))
         # 역명 파일 불러오기
-        __station_info = pd.read_excel(io='/home/ubuntu/capstone-2023-04/backend/web_server/station/data/station_230309.xlsx')
+        __station_info = pd.read_excel(io='./station/data/station_230309.xlsx')
         
         self.__station = set()
         for row in __station_info.itertuples():

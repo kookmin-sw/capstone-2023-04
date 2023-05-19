@@ -56,15 +56,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'web_server.wsgi.application'
 
-
-# Database
-
-# DATABASE_ROUTERS = [
-#     'station.routers.MultiDBRouter',    
-# ]
-
-# DATABASE_APPS_MAPPING = {'web_server':'default', 'station':'station_db'}
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -76,14 +67,14 @@ DATABASES = {
     }
 }
 
-# # Rest Framework
-# REST_FRAMEWORK = {
-#     # Use Django's standard `django.contrib.auth` permissions,
-#     # or allow read-only access for unauthenticated users.
-#     'DEFAULT_PERMISSION_CLASSES': [
-#         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-#     ]
-# }
+# Rest Framework
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny'
+    ]
+}
 
 # Password validation
 
