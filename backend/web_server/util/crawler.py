@@ -120,6 +120,64 @@ class Crawler():
         
         return results
     
+    def test(self):
+        tagger = Mecab()
+        
+        #테스트 데이터 불러오기
+        test_content = pd.read_csv('./station/data/demo_221202.csv')
+        test_content = list(test_content['content'])
+            
+        station_nouns = []
+        station = self.station
+        for n in test_content:
+            for noun in tagger.nouns(n):
+                if noun in station:
+                    noun = noun.rstrip("역")
+                    station_nouns.append(noun)
+
+        # 지하철 역명 카운팅
+        station_nouns_counter = Counter(station_nouns)
+        # 상위 20개만 저장
+        top_station_nouns = list(station_nouns_counter.most_common(3))
+        print(top_station_nouns)
+        # results에 역명만 저장
+        results = []
+        for item in top_station_nouns:
+            results.append(item[0])
+        
+        # 해당 역에 대해 조회 요청
+        django.setup()
+        from station.models import Tests
+        queryset = Tests.objects.all()
+        queryset.delete()
+        api_key = os.environ['api_key']
+        for station in results:
+            query = urllib.parse.quote(station)
+            # 서울시 API
+            url = 'http://swopenAPI.seoul.go.kr/api/subway/' + api_key + '/json/realtimeStationArrival/0/100/'+query
+        
+            request = urllib.request.Request(url)
+            
+            response = urllib.request.urlopen(request)
+            response_body = response.read()
+            rescode = response.getcode()  
+
+            if(rescode == 200):
+                response_dict = json.loads(response_body.decode('utf-8'))
+                items = response_dict['realtimeArrivalList']
+                # json 응답에서 필요한 정보만 처리
+                for item_index in range(0, len(items)):
+                    if items[item_index]['ordkey'][1] == "1" and int(items[item_index]['barvlDt']) > 0:
+                        
+                        name = items[item_index]['statnNm']
+                        updnLine = items[item_index]['updnLine']
+                        heading_to = items[item_index]['trainLineNm']
+                        arrival_time = items[item_index]['barvlDt']
+                        subwayId = items[item_index]['subwayId']
+                        
+                        Tests.objects.create(station_name=name, updnLine=updnLine, heading_to=heading_to, arrival_time=arrival_time, subway_id=subwayId)
+        
+        
     def station_info(self, stations):
         django.setup()
         from station.models import Stations, Times

@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer
-from .models import Stations, Times
+from .models import *
 
 class TimeSerializer(ModelSerializer):
     class Meta:
@@ -11,3 +11,7 @@ class StationSerializer(ModelSerializer):
         model = Stations
         fields = ['station_name', 'updnLine', 'heading_to', 'arrival_time', 'subway_id']
         
+class TestSerializer(ModelSerializer):
+    class Meta:
+        model = Tests
+        fields = ['station_name', 'updnLine', 'heading_to', 'arrival_time', 'subway_id']
