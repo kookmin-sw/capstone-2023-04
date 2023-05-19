@@ -26,11 +26,9 @@ function Pathindex(props) {
       </span>
       <div
         className="Routetime"
-        style={{ backgroundColor: busColor[bus_index] }}>
-        여기에 중괄호로 props.걸리는 시간 넣어주세요.
-      </div>
+        style={{ backgroundColor: busColor[bus_index] }}
+      ></div>
     </span>
   );
 }
-
 export default Pathindex;
