@@ -150,11 +150,12 @@ class Crawler():
                     if items[item_index]['ordkey'][1] == "1" and int(items[item_index]['barvlDt']) > 300:
                         
                         name = items[item_index]['statnNm']
+                        updnLine = items[item_index]['updnLine']
                         heading_to = items[item_index]['trainLineNm']
                         arrival_time = items[item_index]['barvlDt']
                         subwayId = items[item_index]['subwayId']
                         
-                        Stations.objects.create(station_name=name, heading_to=heading_to, arrival_time=arrival_time, subway_id=subwayId)
+                        Stations.objects.create(station_name=name, updnLine=updnLine, heading_to=heading_to, arrival_time=arrival_time, subway_id=subwayId)
             else:
                 print("Error Code: " + rescode)
         

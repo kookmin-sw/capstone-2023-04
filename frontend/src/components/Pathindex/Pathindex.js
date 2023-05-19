@@ -26,7 +26,7 @@ function Pathindex(props) {
       <span className="Iconcontainer" style={{    backgroundColor: busColor[bus_index] }}>
         <img src="icon/bus_icon.png"></img>
       </span>
-      <div className="Routetime" style={{ backgroundColor: color[index] }}>
+      <div className="Routetime" style={{ backgroundColor: busColor[bus_index] }}>
       </div>
     </span>
 
@@ -34,3 +34,5 @@ function Pathindex(props) {
           
   );
 }
+
+export default Pathindex;
