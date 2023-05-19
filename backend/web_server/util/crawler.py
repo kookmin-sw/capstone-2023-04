@@ -140,6 +140,8 @@ class Crawler():
         # 상위 20개만 저장
         top_station_nouns = list(station_nouns_counter.most_common(3))
         print(top_station_nouns)
+        top_station_nouns.append(('혜화', 10))
+        print(top_station_nouns)
         # results에 역명만 저장
         results = []
         for item in top_station_nouns:
@@ -167,7 +169,7 @@ class Crawler():
                 items = response_dict['realtimeArrivalList']
                 # json 응답에서 필요한 정보만 처리
                 for item_index in range(0, len(items)):
-                    if items[item_index]['ordkey'][1] == "1" and int(items[item_index]['barvlDt']) > 0:
+                    if items[item_index]['ordkey'][1] == "1" and int(items[item_index]['barvlDt']) > 180:
                         
                         name = items[item_index]['statnNm']
                         updnLine = items[item_index]['updnLine']
