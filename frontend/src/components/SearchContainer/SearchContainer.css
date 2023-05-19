@@ -16,6 +16,10 @@
   background-color: #292a2d;
 }
 
+.waypoint:hover {
+  cursor: pointer;
+}
+
 input {
   padding: 0 0 0 10px;
   color: #ffffff;
