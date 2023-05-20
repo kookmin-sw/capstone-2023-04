@@ -1,8 +1,11 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import "./Pathindex.css";
 
 // props로 받아야 할 것 : 버스번호
 function Pathindex(props) {
+  const location = useLocation();
+
   const busColor = ["#f2b70a", "#0068b7", "#53b332", "e60012"];
   // 버스 번호는 idx 0 : 2자리수 노란색, idx 1 : 3자리수, 파란색, idx 2 : 4자리수, 초록색, idx 3 : 4자리수, 9로 시작, 빨간색
   let bus_index = -1;
@@ -24,8 +27,10 @@ function Pathindex(props) {
       >
         <img src="icon/bus_normal_icon.png"></img>
       </span>
-      <div className="Routetime" style={{ backgroundColor: busColor[bus_index] }}>
-      </div>
+      <div
+        className="Routetime"
+        style={{ backgroundColor: busColor[bus_index] }}
+      ></div>
     </span>
   );
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import Appbutton from "../Appbutton/Appbutton";
 import "./SearchContainer.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { departureState, arrivalState } from "store";
 
@@ -17,9 +17,13 @@ function SearchContainer() {
 
   const navigateResult = (e) => {
     const { result } = e.target;
-    navigate("/result", { state: result });
+    navigate("/result", {
+      state: {
+        departure: departure,
+        arrival: arrival
+  } });
   };
-
+    
   return (
     <div className="SearchContainer">
       <div>
@@ -44,11 +48,14 @@ function SearchContainer() {
         />
       </div>
       <div>
-        <Appbutton message="찾아보자!"
-          name="result"
-          value= {[departure, arrival]}
-          onclick={navigateResult}
-        />
+        <Link
+          to={'./Result'}
+          state={{
+            departure: departure,
+            arrival : arrival,
+          }}
+          
+          >here!</Link>
       </div>
     </div>
   );
