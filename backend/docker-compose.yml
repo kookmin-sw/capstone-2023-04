@@ -9,7 +9,7 @@ services:
         ports:
           - "80:80"
         volumes:
-          - ./server_dev:/srv/docker-server
+          - ./web_server:/srv/docker-server
           - ./log:/var/log/nginx
         depends_on:
           - django
@@ -21,5 +21,5 @@ services:
         restart: always
         command: uwsgi --ini uwsgi.ini
         volumes:
-          - ./server_dev:/srv/docker-server
+          - ./web_server:/srv/docker-server
           - ./log:/var/log/uwsgi
