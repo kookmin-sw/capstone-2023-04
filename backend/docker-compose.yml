@@ -16,7 +16,7 @@ services:
 
     django:
         container_name: django
-        build: ./server_dev
+        build: ./web_server
         image: django
         restart: always
         command: uwsgi --ini uwsgi.ini
