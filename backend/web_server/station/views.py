@@ -38,3 +38,12 @@ def findRoute(request):
 class ListStationView(ListAPIView):
     queryset = Stations.objects.all().order_by('subway_id')
     serializer_class = StationSerializer
+    
+@api_view(['GET'])
+def test(request):
+    getter = crawler.Crawler()
+    station = getter.test()
+    queryset = Tests.objects.all().order_by('subway_id')
+    serializer = TestSerializer(queryset, many=True)
+    
+    return Response(serializer.data)
