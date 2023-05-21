@@ -27,5 +27,13 @@ class Stations(models.Model):
         verbose_name_plural = 'Stations'
         app_label = 'station'
         db_table = 'stations'
-
-
+        
+class Tests(models.Model):
+    station_name = models.CharField(max_length=10)
+    updnLine = models.CharField(max_length=2)
+    heading_to = models.CharField(max_length=100)
+    arrival_time = models.IntegerField(blank=True, null=True)
+    subway_id = models.CharField(max_length=4, default='0000')
+    
+    class Meta:
+        db_table = 'tests'
