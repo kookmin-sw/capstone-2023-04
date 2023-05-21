@@ -15,16 +15,6 @@ function SearchContainer() {
     navigate("/search", { state: name });
   };
 
-  const navigateResult = (e) => {
-    const { result } = e.target;
-    navigate("/result", {
-      state: {
-        departure: departure,
-        arrival: arrival,
-      },
-    });
-  };
-
   return (
     <div className="SearchContainer">
       <div>
