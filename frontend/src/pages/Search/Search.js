@@ -1,15 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useLocation } from "react-router-dom";
 import {
-  Appbutton,
-  Appheader,
   Postcode,
-  SearchContainer,
-  Timeline,
 } from "components";
-
-import { useRecoilValue } from "recoil";
-import { stationListState } from "store";
 
 export default function Search() {
   const location = useLocation();

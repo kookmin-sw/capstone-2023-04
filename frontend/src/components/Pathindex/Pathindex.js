@@ -1,10 +1,8 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
 import "./Pathindex.css";
 
 // props로 받아야 할 것 : 버스번호
 function Pathindex(props) {
-  const location = useLocation();
   // 지하철 호선 1~9, 우이신설
   const metroColor = [
     "#0052A4",
