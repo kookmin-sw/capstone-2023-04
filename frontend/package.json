@@ -21,7 +21,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "aws s3 sync ./build s3://algotafront --profile=mumat"
+    "deploy": "aws s3 sync ./build s3://algotafront --profile=mumat",
+    "invalidate": "aws cloudfront create-invalidation --profile=mumat --distribution-id E2E4WLUAWA3OK8 --paths /*"
   },
   "eslintConfig": {
     "extends": [
