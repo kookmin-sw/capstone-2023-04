@@ -5,31 +5,39 @@ import "./Pathindex.css";
 // props로 받아야 할 것 : 버스번호
 function Pathindex(props) {
   const location = useLocation();
+  // 지하철 호선 1~9, 우이신설
+  const metroColor = [
+    "#0052A4",
+    "#00A84D",
+    "#EF7C1C",
+    "#00A5DE",
+    "#996CAC",
+    "#CD7C2F",
+    "#747F00",
+    "#E6186C",
+    "#BB8336",
+    "#B0CE18",
+  ];
+  var metroIndex = -1;
+  var metro_name = -1;
 
   const busColor = ["#f2b70a", "#0068b7", "#53b332", "#e60012"];
   // 버스 번호는 idx 0 : 2자리수 노란색, idx 1 : 3자리수, 파란색, idx 2 : 4자리수, 초록색, idx 3 : 4자리수, 9로 시작, 빨간색
-  let bus_index = -1;
-  if (props.bus_id < 100) {
-    bus_index = 0;
-  } else if (props.bus_id < 1000) {
-    bus_index = 1;
-  } else if (props.bus_id < 9000) {
-    bus_index = 2;
-  } else if (props.bus_id < 10000) {
-    bus_index = 3;
-  }
-  
-  const imgSrc = ["icon/bus_error_icon.png", "icon/bus_normal_icon.png", "icon/metro_error.png", "icon/metro_normal_icon.png","walk_error_icon.png","walk_normal_icon.png"]
-// 버스 에러 0, 버스 정상 1, 지하철 에러 2, 지하철 정상 3, 도보 에러 4, 도보 정상 5
+  var bus_index = -1;
+  var bus_id = -1;
+  var bus_name = "";
+  const regex = /[^0-9]/g;
+  const imgSrc = ["icon/metro_normal_icon.png", "icon/bus_normal_icon.png"];
+  // 지하철 정상 0, 버스 정상 1
 
-  const imgIdx = -1
-// 서버에서 받아온 정보에 따라서 imgIdx를 바꿔주세요
-  const subPath = props.item.subPath;
-  for (let i = 0; i < subPath.length; i++)
-  {
-    if(subPath[i].trafficType !== 3)
-      console.log(subPath[i])
+  var imgIdx = -1;
+  // 서버에서 받아온 정보에 따라서 imgIdx를 바꿔주세요
+  const itemSubPath = props.item.subPath;
+  const subPath = [];
+  for (let i = 0; i < itemSubPath.length; i++) {
+    if (itemSubPath[i].trafficType !== 3) subPath.push(itemSubPath[i]);
   }
+
   return (
     <span className="Pathindex">
       <div className="Informationbox">
@@ -39,26 +47,68 @@ function Pathindex(props) {
           <span>분</span>
           <span> | </span>
         </div>
-        <div className="Routeinfo">
-          <span>출발 : 출발지이름</span>
-
-          <div className="Transportation">
-            <span
-              className="Iconcontainer"
-              style={{
-                backgroundColor: busColor[bus_index],
-              }}
-            >
-              <img src={imgSrc[imgIdx]}></img>
-            </span>
-            <span style={{ color: busColor[bus_index] }}> 버스번호</span>
-            {/* 버스 번호 서버에서 넣어주세요 */}
-            <span> | 정류장 이름</span>
-
-          
-          </div>
-          <span>도착 : 도착지 이름</span>
-        </div>
+        {subPath.map((item, index) => {
+          imgIdx = item.trafficType - 1;
+          if (item.trafficType === 2) {
+            bus_name = item.lane[0].busNo;
+            bus_id = bus_name.replace(regex, "");
+            bus_id = Number(bus_id);
+              if (bus_id < 100) {
+                bus_index = 0;
+              } else if (bus_id < 1000) {
+                bus_index = 1;
+              } else if (bus_id < 9000) {
+                bus_index = 2;
+              } else if (bus_id < 10000) {
+                bus_index = 3;
+              }
+            }
+          if (item.trafficType === 1) {
+            metro_name = item.lane[0].name;
+            metro_name = metro_name.replace("수도권", "");
+            metroIndex = item.lane[0].subwayCode - 1;
+            if (metroIndex > 99) metroIndex = metroColor.length -1;
+          }
+          return (
+            <div key={index} className="Routeinfo">
+              <div className="Transportation">
+                {item.trafficType === 2 ? (
+                  <span
+                    className="Iconcontainer"
+                    style={{
+                      backgroundColor: busColor[bus_index],
+                    }}
+                  >
+                    <img src={imgSrc[imgIdx]}></img>
+                  </span>
+                ) : (
+                  <span
+                    className="Iconcontainer"
+                    style={{
+                      backgroundColor: metroColor[metroIndex],
+                    }}
+                  >
+                    <img src={imgSrc[imgIdx]}></img>
+                  </span>
+                )}
+                {item.trafficType === 2 ? (
+                  <span style={{ color: busColor[bus_index] }}>
+                    {" "}
+                    {bus_name}{" "}
+                  </span>
+                ) : (
+                  <span style={{ color: metroColor[metroIndex] }}>
+                    {" "}
+                    {metro_name}{" "}
+                  </span>
+                )}
+                {/* 버스 번호 서버에서 넣어주세요 */}
+                <span> | {item.startName}</span>
+              </div>
+              {index === subPath.length - 1 ? (<span>{item.endName} 하차</span>) : (<span></span>)}
+            </div>
+          );
+        })}
       </div>
     </span>
   );

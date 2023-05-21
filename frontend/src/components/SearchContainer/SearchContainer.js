@@ -20,10 +20,11 @@ function SearchContainer() {
     navigate("/result", {
       state: {
         departure: departure,
-        arrival: arrival
-  } });
+        arrival: arrival,
+      },
+    });
   };
-    
+
   return (
     <div className="SearchContainer">
       <div>
@@ -49,13 +50,14 @@ function SearchContainer() {
       </div>
       <div>
         <Link
-          to={'./Result'}
+          to={"./Result"}
           state={{
             departure: departure,
-            arrival : arrival,
+            arrival: arrival,
           }}
-          
-          ><Appbutton/></Link>
+        >
+          <Appbutton message="찾아보자!" />
+        </Link>
       </div>
     </div>
   );

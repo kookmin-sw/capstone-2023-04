@@ -4,12 +4,13 @@
   justify-content: center;
 }
 
-.Pathindex .Informationbox{
+.Pathindex .Informationbox {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
 }
+
 .timeValue {
   font-size: 30px;
 }
@@ -22,7 +23,6 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin: 10px;
   justify-content: flex-start;
 }
 
