@@ -1,10 +1,9 @@
 from pathlib import Path
 import my_settings
-
+import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = my_settings.SECRET_KEY
-
+SECRET_KEY = os.environ['SECRET_KEY']
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
