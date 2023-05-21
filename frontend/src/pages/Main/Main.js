@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import "./Main.css";
 import { Appbutton, Appheader, SearchContainer, Timeline } from "components";
-import { useRecoilValue, useRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { stationListState } from 'store';
 import api from "api/mainApi";
 

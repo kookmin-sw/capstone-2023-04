@@ -24,16 +24,20 @@ function Pathindex(props) {
 
   const imgIdx = -1
 // 서버에서 받아온 정보에 따라서 imgIdx를 바꿔주세요
-
+  const subPath = props.item.subPath;
+  for (let i = 0; i < subPath.length; i++)
+  {
+    if(subPath[i].trafficType !== 3)
+      console.log(subPath[i])
+  }
   return (
     <span className="Pathindex">
       <div className="Informationbox">
         <div className="InformaitonTitle">
-          <span className="timeValue">30</span>
+          <span className="timeValue">{props.item.totalTime}</span>
           {/* 걸리는 시간을 서버에서 받아서 minute에 넣어주세요 */}
           <span>분</span>
           <span> | </span>
-          <span> 도착시간 : ~~~ </span>
         </div>
         <div className="Routeinfo">
           <span>출발 : 출발지이름</span>

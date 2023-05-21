@@ -1,22 +1,12 @@
 import React from "react";
 import api from "../../api/mainApi";
 import "./Appbutton.css";
-import { useRecoilValue, useRecoilState } from 'recoil';
-import { departureState, arrivalState, stationListState } from "store";
-import axios from "axios";
+import { useSetRecoilState } from 'recoil';
+import { stationListState} from "store";
 
 function Appbutton(props) {
-  const [stationList, setStationList] = useRecoilState(stationListState);
-  const departure = useRecoilValue(departureState);
-  const arrival = useRecoilValue(arrivalState);
+  const setStationList = useSetRecoilState(stationListState);
 
-  var starting_point = departure;
-  var destination = arrival;
-
-  const data = {
-    starting_point : starting_point,
-    destination : destination
-  }
   function handleSubmit() {
     api.getStationInfo().then((res) => {
       setStationList(res.data)
@@ -24,16 +14,11 @@ function Appbutton(props) {
     })
   };
 
-  function findRoute() {
-    api.postFindRoute(data).then((res) => {
-      console.log(res.data)
-    })
-  }
 
   if (props.message === "찾아보자!") {
     return (
       <div className="Appbutton">
-        <button onClick={findRoute}>{props.message}</button>
+        <button>{props.message}</button>
       </div>
     );
   } else {
