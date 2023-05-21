@@ -1,3 +1,35 @@
 .Pathindex {
   display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.Informationbox {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.timeValue {
+  font-size: 30px;
+}
+
+.InformaitonTitle {
+  justify-content: left;
+}
+
+.Routeinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 10px;
+  justify-content: flex-start;
+}
+
+.Transportation {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 10px;
+  justify-content: center;
 }

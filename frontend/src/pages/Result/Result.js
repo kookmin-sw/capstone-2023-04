@@ -9,17 +9,10 @@ export default function Result() {
     <div className="html">
       <div className="App">
         <Appheader />
-        <div
-          className="Informationbox"
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "flex-start",
-          }}
-        >
-          <Pathindex />
-          <Pathindex />
-        </div>
+{/* main.js 41줄 처럼 정보 받아오면 받아온 것 만큼 Pathindex를 만들어서 보여주면 됨  */}
+        <Pathindex />
+        <Pathindex />
+
       </div>
     </div>
   );
