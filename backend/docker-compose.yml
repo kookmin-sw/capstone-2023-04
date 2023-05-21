@@ -1,0 +1,27 @@
+version: '3'
+services:
+
+    nginx:
+        container_name: nginx
+        build: ./nginx
+        image: nginx
+        restart: always
+        ports:
+          - "80:80"
+        volumes:
+          - ./web_server:/srv/docker-server
+          - ./log:/var/log/nginx
+        depends_on:
+          - django
+
+    django:
+        env_file:
+          - ./.env
+        container_name: django
+        build: ./web_server
+        image: django
+        restart: always
+        command: uwsgi --ini uwsgi.ini
+        volumes:
+          - ./web_server:/srv/docker-server
+          - ./log:/var/log/uwsgi

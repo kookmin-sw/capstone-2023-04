@@ -1,10 +1,9 @@
 from pathlib import Path
 import my_settings
-
+import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = my_settings.SECRET_KEY
-
+SECRET_KEY = os.environ['SECRET_KEY']
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
@@ -115,5 +114,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CORS 관련 추가
 CORS_ORIGIN_WHITELIST = ['http://127.0.0.1:3000'
-                         ,'http://localhost:3000']
+                         ,'http://localhost:3000',
+                         'http://d1kmccevzn3d59.cloudfront.net/'
+                         ]
 CORS_ALLOW_CREDENTIALS = True
