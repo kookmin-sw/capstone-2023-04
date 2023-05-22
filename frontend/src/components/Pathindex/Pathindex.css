@@ -5,8 +5,7 @@
 }
 
 .Pathindex .Informationbox {
-  display: flex;
-  flex-direction: column;
+  width: 75%;
   justify-content: flex-start;
   align-items: flex-start;
 }

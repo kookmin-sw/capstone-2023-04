@@ -1,6 +1,6 @@
 import React from "react";
 import "./Pathindex.css";
-
+import { ProgressBar } from "components";
 // props로 받아야 할 것 : 버스번호
 function Pathindex(props) {
   // 지하철 호선 1~9, 우이신설
@@ -39,6 +39,7 @@ function Pathindex(props) {
   return (
     <span className="Pathindex">
       <div className="Informationbox">
+        <ProgressBar />
         <div className="InformaitonTitle">
           <span className="timeValue">{props.item.totalTime}</span>
           {/* 걸리는 시간을 서버에서 받아서 minute에 넣어주세요 */}

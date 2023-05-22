@@ -1,0 +1,17 @@
+.ProgressBar {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.Routetime {
+    align-items: center;
+    justify-content: center;
+    height: 28px;
+    width: 100%;
+    border-radius: 5px;
+    background-color: #0060ab;
+    z-index: 1;
+}
