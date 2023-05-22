@@ -1,0 +1,21 @@
+.ProgressBar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.pathTime {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75em;
+    height: 18px;
+    width: 100%;
+    margin: 0 3px 0 3px;
+    border-radius: 10px;
+    background-color: #0060ab;
+    z-index: 1;
+}
