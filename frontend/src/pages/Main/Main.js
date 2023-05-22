@@ -45,9 +45,9 @@ export default function Main() {
                 />
               );
             })}
+            <Appbutton message={refresh} state={diffMin} />
           </div>
         </div>
-        <Appbutton message={refresh} state={diffMin} />
       </div>
     </div>
   );

@@ -1,31 +1,31 @@
 .html {
-    background-color: #000000;
+  background-color: #000000;
 }
 
 .App {
-    margin: 0 20% 0 20%;
-    height: 100vh;
-    color: #ffffff;
-    background-color: #1e1f21;
-    text-align: center;
+  margin: 0 20% 0 20%;
+  color: #ffffff;
+  min-height: 100vh;
+  background-color: #1e1f21;
+  text-align: center;
 }
 
 .Informationbox {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 10px;
-    border: 10px solid #292a2d;
-    border-radius: 10px;
-    background-color: #292a2d;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  border: 10px solid #292a2d;
+  border-radius: 10px;
+  background-color: #292a2d;
+  text-align: center;
+  overflow: auto;
 }
 
 .Informationbox p {
-    display: flex;
-    margin: 10px;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    font-weight: bold;
+  display: flex;
+  margin: 10px;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  font-weight: bold;
 }
