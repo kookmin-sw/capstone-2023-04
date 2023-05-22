@@ -25,7 +25,6 @@ function ProgressBar(props) {
       var bus_id = -1;
       var bus_name = "";
 
-    console.log(path)
     return (
         <span className="ProgressBar">
             {path.map((item, index) => {
