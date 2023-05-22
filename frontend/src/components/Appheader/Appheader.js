@@ -11,7 +11,7 @@ function Appheader() {
       }}
     >
       <div className="Appheader">
-        <h1>ALGOTA</h1>
+        <span>ALGOTA</span>
       </div>
     </Link>
   );

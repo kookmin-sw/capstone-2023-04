@@ -28,24 +28,26 @@ export default function Main() {
   return (
     <div className="html">
       <div className="App">
-        <Appheader />
-        <SearchContainer />
+        <div className="nanumgothic">
+          <Appheader />
+          <SearchContainer />
 
-        <div className="InformationClass">
-          <div className="Informationbox">
-            <p>지금 지연이 예상되고 있어요!</p>
-            {stationList.map((item, index) => {
-              return (
-                <Timeline
-                  key={index}
-                  station={item.station_name}
-                  subway_id={item.subway_id}
-                  heading_to={item.heading_to}
-                  updnLine={item.updnLine}
-                />
-              );
-            })}
-            <Appbutton message={refresh} state={diffMin} />
+          <div className="InformationClass">
+            <div className="Informationbox">
+              <p>지금 지연이 예상되고 있어요!</p>
+              {stationList.map((item, index) => {
+                return (
+                  <Timeline
+                    key={index}
+                    station={item.station_name}
+                    subway_id={item.subway_id}
+                    heading_to={item.heading_to}
+                    updnLine={item.updnLine}
+                  />
+                );
+              })}
+              <Appbutton message={refresh} state={diffMin} />
+            </div>
           </div>
         </div>
       </div>

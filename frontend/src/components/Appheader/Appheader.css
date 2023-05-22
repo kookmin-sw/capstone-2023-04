@@ -5,6 +5,8 @@
     justify-content: center;
     color: #09c75b;
     background-color: #292a2d;
-    font-weight: bold;
-    font-size: calc(5px + 2vmin);
+    font-weight: 900;
+    font-size: 2em;
+    padding: 0.5em;
 }
+
