@@ -40,7 +40,6 @@ export default function Result() {
       else continue;
     }
   }
-  console.log(path)
   // station_name은 지하철 경로
   for(let i = 0; i < passStopList.length; i++)
   {
@@ -54,7 +53,6 @@ export default function Result() {
       {
         if(realStationName === stationList[k][0] && wayCode === stationList[k][1])
         {
-          console.log("지연", stationList[k][0], "index", index);
           path.splice(index, 1);
           break;
         }
