@@ -57,7 +57,6 @@ export default function Result() {
       <div className="App">
         <div className="nanumgothic">
           <Appheader />
-          {/* main.js 41줄 처럼 정보 받아오면 받아온 것 만큼 Pathindex를 만들어서 보여주면 됨  */}
           {path.map((item, index) => {
             return <Pathindex key={index} item={item} />;
           })}
