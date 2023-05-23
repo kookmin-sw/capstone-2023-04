@@ -33,7 +33,7 @@ function Appbutton(props) {
     {
       return (
         <div className="Appbutton">
-          <button disabled={true} style={{backgroundColor:"#777777"}}>{props.message}</button>
+          <button disabled={true} style={{backgroundColor:"#777"}}>{props.message}</button>
         </div>
       );
     }
