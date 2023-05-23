@@ -29,13 +29,11 @@ class FindingRoute():
         return geocode
         
     def find_route(self, geocode_list):
-        print(geocode_list)
         api_key = urllib.parse.quote(os.environ['transport_key'])
         SX = geocode_list[0][0]
         SY = geocode_list[0][1]
         EX = geocode_list[1][0]
         EY = geocode_list[1][1]
-        
         url = "https://api.odsay.com/v1/api/searchPubTransPathT?SX=" +SX +"&SY="+SY+ "&EX=" + EX + "&EY=" + EY + "&apiKey="+api_key
         
         request = urllib.request.Request(url)

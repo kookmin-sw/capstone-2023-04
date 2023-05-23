@@ -27,8 +27,8 @@ def getTime(request):
 @api_view(['POST'])
 def findRoute(request):
     finder = findingRoute.FindingRoute()
-    starting_point = request.data['starting_point']
-    destination = request.data['destination']
+    starting_point = request.data['departure']
+    destination = request.data['arrival']
     address = [starting_point, destination]
     
     geocode = finder.geocoding(address)
@@ -47,3 +47,7 @@ def test(request):
     serializer = TestSerializer(queryset, many=True)
     
     return Response(serializer.data)
+
+class ListTestView(ListAPIView):
+    queryset = Tests.objects.all().order_by('subway_id')
+    serializer_class = TestSerializer
