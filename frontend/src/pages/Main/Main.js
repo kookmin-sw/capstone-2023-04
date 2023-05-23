@@ -7,23 +7,24 @@ import api from "api/mainApi";
 
 export default function Main() {
   const [stationList, setStationList] = useRecoilState(stationListState);
-  const [refreshTime, setTime] = useState("");
-
-  useEffect(() => {
-    api.getSavedTime().then((res) => {
-      let time = res.data[0].request_time;
-      setTime(time);
-    });
-    api.getStationList().then((res) => {
-      setStationList(res.data);
-    });
-  }, []);
+  const [refreshTime, setRefreshTime] = useState("");
 
   const today = new Date();
   const before = new Date(refreshTime);
   const diff = today.getTime() - before.getTime();
   const diffMin = diff / (60 * 1000);
   const refresh = diffMin.toString().charAt() + " 분 전";
+
+  useEffect(() => {
+    api.getSavedTime().then((res) => {
+      let time = res.data[0].request_time;
+      setRefreshTime(time);
+    });
+    api.getStationList().then((res) => {
+      setStationList(res.data);
+    });
+  }, []);
+
 
   return (
     <div className="html">
