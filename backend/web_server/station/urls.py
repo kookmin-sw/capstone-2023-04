@@ -7,4 +7,5 @@ urlpatterns = [
     path('list', views.ListStationView.as_view(), name='list'),
     path('findRoute', views.findRoute, name='findRoute'),
     path('test', views.test, name='test'),
+    path('testList', views.ListTestView.as_view()),
 ]
