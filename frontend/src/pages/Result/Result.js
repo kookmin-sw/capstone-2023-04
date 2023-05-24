@@ -13,7 +13,6 @@ export default function Result() {
 
   useEffect(() => {
     api.postFindRoute(data).then((res) => {
-      console.log(res.data.route);
       return res.data.route
     }).then((data)=>{
    const filterPath = data.filter(item=>{ 
