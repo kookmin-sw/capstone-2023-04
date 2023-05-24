@@ -13,7 +13,9 @@
 
 ### 2. 소개 영상
 
-[![소개 영상](https://img.youtube.com/vi/zNNZ_azP7Hs/1.jpg)](https://youtu.be/zNNZ_azP7Hs?t=0s) 
+[![소개 영상](https://img.youtube.com/vi/zNNZ_azP7Hs/sddefault.jpg)](https://youtu.be/zNNZ_azP7Hs?t=0s) 
+
+영상을 보시려면 사진을 눌러주세요.
 
 ---
 
@@ -32,27 +34,20 @@
 ### 4. 사용법
 
 <h2>메인 화면</h2>
-<img src = "./image/UI/main.jpg" height="500">
+<img src = "./image/UI/메인페이지.jpg" height="500">
 
 처음 사이트에 접속했을 때 나오는 메인화면이다. 
 
 출발지와 도착지를 입력하여 길찾기를 할 수 있고, 현재 지연되고 있는 지하철 역에 대한 정보를 제공한다.
 
 <h2>검색 화면</h2>
-<img src = "./image/UI/search.jpg" height="500">
+<img src = "./image/UI/주소검색.jpg" height="500">
 
 검색어를 입력하면 관련 검색어를 띄워준다. 
 
 리스트 중에서 원하는 곳을 누르면 해당 주소로 출발지 및 목적지를 지정할 수 있다.
 
 <h2>결과 화면</h2>
-<img src = "./image/UI/result.jpg" height="500">
+<img src = "./image/UI/경로.jpg" height="500">
 
 출발지와 목적지를 입력하면 해당 경로까지 걸리는 시간을 보여준다.
-
-만약 지연되고 있는 지하철이 걸린다면 지연 시간만큼 추가하여 소요 시간을 알려준다.
-
-### 5. 기타
-
-추가적인 내용은 자유롭게 작성하세요.
-
