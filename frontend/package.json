@@ -6,16 +6,23 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.4.0",
     "react": "^18.2.0",
+    "react-daum-postcode": "^3.1.1",
     "react-dom": "^18.2.0",
+    "react-responsive": "^9.0.2",
+    "react-router-dom": "^6.11.1",
     "react-scripts": "5.0.1",
+    "recoil": "^0.7.7",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "aws s3 sync ./build s3://algotafront --profile=mumat",
+    "invalidate": "aws cloudfront create-invalidation --profile=mumat --distribution-id E2E4WLUAWA3OK8 --paths \"/*\""
   },
   "eslintConfig": {
     "extends": [

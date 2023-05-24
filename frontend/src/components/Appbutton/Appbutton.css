@@ -1,0 +1,17 @@
+.Appbutton button {
+  float: right;
+  width: 99px;
+  height: 38px;
+  margin: 10px;
+  border-radius: 10px;
+  color: #ffffff;
+  background-color: #00ac31;
+  font-size: calc(3px + 1vmin);
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+}
+
+.Appbutton button:hover {
+  background-color: #008915;
+}

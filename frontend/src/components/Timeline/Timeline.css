@@ -1,0 +1,33 @@
+.Timeline {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.Iconcontainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0.5px solid #292a2d;
+  border-radius: 50%;
+  background-color: #287faf;
+  width: 32px;
+  height: 32px;
+  z-index: 2;
+}
+
+.Routetime {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  width: 18em;
+  margin: 0 3px 0 -13px;
+  border-radius: 5px;
+  background-color: #0060ab;
+  z-index: 1;
+}

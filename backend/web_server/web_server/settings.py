@@ -1,10 +1,9 @@
 from pathlib import Path
 import my_settings
-
+import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = my_settings.SECRET_KEY
-
+SECRET_KEY = 'django-insecure-+jr*8=wsamcyy+wu%dtv!9u6!xw5$xdbhh0k6klnr89%e7j#yl'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
@@ -20,12 +19,13 @@ INSTALLED_APPS = [
     
     # rest_framework
     'rest_framework',
-    
+    'corsheaders',
     # Custom App
     'station',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -55,42 +55,25 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'web_server.wsgi.application'
 
-
-# Database
-
-DATABASE_ROUTERS = [
-    'station.routers.MultiDBRouter',    
-]
-
-DATABASE_APPS_MAPPING = {'web_server':'default', 'station':'station_db'}
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'web_server',
         'USER': my_settings.web_server_user,
         'PASSWORD' : my_settings.web_server_pw,
-        'HOST' : 'localhost',
-        'PORT' : '3306',
-    },
-    'station_db' : {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'station',
-        'USER': my_settings.db_server_user,
-        'PASSWORD' : my_settings.db_server_pw,
-        'HOST' : 'localhost',
+        'HOST' : 'database-1.c9tgp2ghcuo8.ap-northeast-2.rds.amazonaws.com',
         'PORT' : '3306',
     }
 }
 
-# # Rest Framework
-# REST_FRAMEWORK = {
-#     # Use Django's standard `django.contrib.auth` permissions,
-#     # or allow read-only access for unauthenticated users.
-#     'DEFAULT_PERMISSION_CLASSES': [
-#         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-#     ]
-# }
+# Rest Framework
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny'
+    ]
+}
 
 # Password validation
 
@@ -118,7 +101,7 @@ TIME_ZONE = 'Asia/Seoul'
 
 USE_I18N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
@@ -128,3 +111,10 @@ STATIC_URL = 'static/'
 # Default primary key field type
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# CORS 관련 추가
+CORS_ORIGIN_WHITELIST = ['http://127.0.0.1:3000'
+                         ,'http://localhost:3000',
+                        #  'http://d1kmccevzn3d59.cloudfront.net/'
+                         ]
+CORS_ALLOW_CREDENTIALS = True
