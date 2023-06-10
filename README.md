@@ -9,6 +9,15 @@
 
 해당 정보를 통해 지하철이 아닌 다른 방법으로 이동을 하면 시민들의 불편함을 줄일 수 있다고 생각해서 프로젝트를 기획했다.
 
+
+During the second half of 2022, public transportation, especially subway services, were disrupted due to protests led by Jongjangyeon.
+
+What if we utilize real-time subway arrival information to provide delay updates for commuters traveling by subway?
+
+By providing this information, we can help citizens minimize their inconvenience by suggesting alternative modes of transportation instead of relying on the subway.
+
+I planned this project because I believe it can reduce the inconvenience faced by students and employees.
+
 ---
 
 ### 2. 소개 영상
