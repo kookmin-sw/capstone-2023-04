@@ -9,8 +9,6 @@ const Postcode = (props) => {
   const navigate = useNavigate();
   const setDeparture = useSetRecoilState(departureState);
   const setArrival = useSetRecoilState(arrivalState);
-  console.log(props.location);
-
   const complete = (data) => {
     let fullAddress = data.address;
     let extraAddress = "";
